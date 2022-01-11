@@ -7,7 +7,7 @@ const eqArrays = function (arrayOne, arrayTwo) {
   return true;
 };
 
-const assertEqual = function (arrayOne, arrayTwo) {
+const assertArraysEqual = function (arrayOne, arrayTwo) {
   let result = eqArrays(arrayOne, arrayTwo)
   if (result) {
     console.log(`💖 Assertion Passed: ${arrayOne} === ${arrayTwo}`);
@@ -17,5 +17,5 @@ const assertEqual = function (arrayOne, arrayTwo) {
 };
 
 
-assertEqual([1, 2, 3], [1, 2, 3])
-assertEqual([1, 2, '3'], [1, 2, 3])
+assertArraysEqual([1, 2, 3], [1, 2, 3])
+assertArraysEqual([1, 2, '3'], [1, 2, 3])
