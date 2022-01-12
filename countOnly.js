@@ -8,7 +8,7 @@ const assertEqual = function(actual, expected) {
 
 const countOnly = function(allItems, itemsToCount) {
   const countObject = {};
-  //loop through object's keys
+  //loop through array
   for (let key of allItems) {
   //check if key is true  
     if (itemsToCount[key]) {
