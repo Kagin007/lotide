@@ -10,16 +10,6 @@ const eqArrays = function (arrayOne, arrayTwo) {
   return true
 };
 
-const assertArraysEqual = function (arrayOne, arrayTwo) {
-  let result = eqArrays(arrayOne, arrayTwo)
-  if (result) {
-    console.log(`💖 Assertion Passed: ${arrayOne} === ${arrayTwo}`);
-  } else {
-    console.log(`👎 Assertion Failed: ${arrayOne} !== ${arrayOne}`);
-  }
-};
-
-
 const eqObjects = function(object1, object2) {
   //check that the length of the keys are the same in both objects
   oneKeyArray = Object.keys(object1);
@@ -30,36 +20,42 @@ const eqObjects = function(object1, object2) {
   }   
   //see if the key of object1 returns the same value in object2
   for (let key of oneKeyArray) {
-    console.log(key)
     if (object1[key] !== object2[key]) {
       if (Array.isArray(object1[key])) {
-        console.log('array', eqArrays(object1[key], object2[key]))
         if (!eqArrays(object1[key], object2[key])) {
           return false
         } else {
           return true
         }
       }
-      console.log("obj1: ", object1[key], 'obj2: ', object2[key])
       return false
     }      
   }
   return true;
 };
 
-// const ab = {b: "2", a: ["2", 3]};
-// const ba = { b: "2", a: "1" };
+const assertObjectsEqual = function (actual, expected) {
+  const inspect = require('util').inspect; // <= add this line
+  if(inspect(actual) && inspect(expected)) {
+    if (eqObjects(actual, expected)) {
+      console.log(`💖 Assertion Passed: ${actual} === ${expected}`);
+    } else {
+      console.log(`👎 Assertion Failed: ${actual} !== ${expected}`);
+    }
+  }
+};
 
-// assertEqual(ab, { a: "1", b: "2" })
 
-// console.log(eqObjects(ab, ba)); // => true
+let objOne = { a: '1', b: 2 }
+let objTwo = { b: 2, a: '1' }
+let objThree = { a: '1', b: 3}
+let objFour = { a: [1,2], b: 3}
+let objFive = { b: 3, a: [1,2]}
 
-// const abc = { a: ["2", 3], b: "2" };
-// console.log(eqObjects(ab, abc)); // => false
+assertObjectsEqual(objOne, objTwo)
+assertObjectsEqual(objOne, objTwo)
+assertObjectsEqual(objOne, objThree)
+assertObjectsEqual(objFour, objFive)
+assertObjectsEqual(objFive, objFour)
 
-const cd = { d: ["2", 3], c: "1",  };
-const dc = { d: ["2", 3], c: "1" };
-console.log(eqObjects(cd, dc)); // => true
 
-const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2)); // => false
