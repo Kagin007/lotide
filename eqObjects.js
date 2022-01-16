@@ -31,17 +31,11 @@ const eqObjects = function(object1, object2) {
   //see if the key of object1 returns the same value in object2
   for (let key of oneKeyArray) {
     if (object1[key] !== object2[key]) {
-      console.log("values don't match... checking if its an array...")
       if (Array.isArray(object1[key])) {
-        console.log("value is array.. checking if values match...")
         if (!eqArrays(object1[key], object2[key])) {
-           console.log("obj1:", object1[key], "obj2:", object2[key])
-          console.log("arrays don't match")
           return false
         }
       } else {
-          console.log("obj1:", typeof object1[key], "obj2:", typeof object2[key])
-          console.log("values don't match")
           return false         
       }
     }
