@@ -4,4 +4,6 @@ const tail = function(arr) {
   return newArray;
 };
 
+console.log(tail([]))
+
 module.exports = tail;
