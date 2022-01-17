@@ -1,21 +1,3 @@
-const eqArrays = function(arrayOne, arrayTwo) {
-  for (let index in arrayOne) {
-    if (arrayOne[index] !== arrayTwo[index]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const assertArraysEqual = function(arrayOne, arrayTwo) {
-  let result = eqArrays(arrayOne, arrayTwo);
-  if (result) {
-    console.log(`💖 Assertion Passed: ${arrayOne} === ${arrayTwo}`);
-  } else {
-    console.log(`👎 Assertion Failed: ${arrayOne} !== ${arrayOne}`);
-  }
-};
-
 const middle = function(array) {
   if (array.length <= 2) {
     return [];
@@ -38,5 +20,5 @@ const evenNumCheck = function(num) {
   }
 };
 
-assertArraysEqual(middle([2,3,4,5]), [3,4]); //=> should assert true
-assertArraysEqual(middle([2,3,5]), [3]); //=> should assert true
+module.exports = middle
+
