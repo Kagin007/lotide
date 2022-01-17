@@ -1,10 +1,18 @@
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
+// const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
+const expect = require('chai').expect;
 
-//tests
-let testArray = [1,2,3];
+describe("#tail drops the first element in an array and returns the rest (tail) of the array", () => {
+  it("return [2, 3] from [1, 2, 3]" , () => {
+    const actualResult = tail([1, 2, 3]);
+    const expectedResult = [2, 3];
+    expect(actualResult).to.deep.equal(expectedResult)
+  })
 
-assertEqual(tail(testArray)[0], 2);
-assertEqual(tail(testArray).length, 2);
-assertEqual(tail(testArray).length, 3);
-assertEqual(tail([]).length, [].length);
+  it("return an empty array if an empty array is entered", () => {
+    const actualResult = tail([]);
+    const expectedResult = [];
+    expect(actualResult).to.deep.equal(expectedResult)
+  })
+})
