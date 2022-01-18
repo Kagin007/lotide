@@ -1,22 +1,3 @@
-const eqArrays = function (arrayOne, arrayTwo) {
-  for (let index in arrayOne) {
-    if (arrayOne[index] !== arrayTwo[index]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const assertArraysEqual = function (arrayOne, arrayTwo) {
-  let result = eqArrays(arrayOne, arrayTwo)
-  if (result) {
-    console.log(`💖 Assertion Passed: ${arrayOne} === ${arrayTwo}`);
-  } else {
-    console.log(`👎 Assertion Failed: ${arrayOne} !== ${arrayOne}`);
-  }
-};
-
-
 const letterPositions = function(sentence) {
   const results = {};
   let noSpaces = sentence.split(' ').join('');
@@ -35,8 +16,4 @@ const letterPositions = function(sentence) {
   return results;
 };
 
-testObject = letterPositions("adam")
-
-assertArraysEqual(testObject['a'], [0, 2]);
-assertArraysEqual(testObject['d'], [1]);
-assertArraysEqual(testObject['m'], [3]);
+module.exports = letterPositions;
